@@ -9,16 +9,16 @@ export default function Navbar() {
   return (
     <nav className="absolute top-0 left-0 w-full px-6 py-3 md:px-10 md:py-4 z-50
   bg-white/40 backdrop-blur-2xl border-b border-white/20
-  flex items-center justify-between">
+  flex items-center justify-between ">
       
       {/* Logo */}
       <h1 className="text-4xl md:text-4xl text-green-900 font-bold font-[Cormorant_Garamond] tracking-wide">
-        <img className="h-30" src={logo}/>
+        <img className="h-30" src={logo} />
       </h1>
       {/* font-serif font that changed */}
 
       {/* Desktop Menu */}
-      <ul className="hidden md:flex gap-10 text-lg font-light">
+      <ul className="hidden md:flex gap-10 text-lg font-light ">
         <Link to="/home" className="hover:opacity-70">Home</Link>
         <Link to="/about" className="hover:opacity-70">About</Link>
         <Link to="/portfolio" className="hover:opacity-70">Portfolio</Link>

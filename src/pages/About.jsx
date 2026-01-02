@@ -1,85 +1,95 @@
-import cover1 from "../assets/images/cover1.png";
-import cover3 from "../assets/images/teamS.jpeg";
-import cover4 from "../assets/images/teamS1.jpeg";
 import boss from "../assets/images/mainboss.jpg";
+import videopeople from "../assets/images/pratapvideographer.jpg";
+import editor from "../assets/images/Vasuphotoedtiter.jpg";
+import both from "../assets/images/VEnkeyvideographer+edtiter.jpg";
 
 export default function About() {
   return (
-    <section className="w-full bg-[#F7F4ED] py-16 md:py-20 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Image + Text */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center mt-10">
-          {/* Image 1 */}
-          <div className="overflow-hidden rounded-3xl shadow-md mt-18">
-            <img
-              src={cover3}
-              alt="Elysia Event Planner"
-              className="w-full h-[260px] sm:h-[320px] md:h-[400px] object-cover"
-            />
-          </div>
+    <section className="w-full bg-[#F7F4ED] py-16 md:py-20 px-4 sm:px-6 mt-47">
+      <div className="max-w-6xl mx-auto">
 
-          {/* About Content */}
-          <div className="text-left">
-            <p className="font-light text-sm md:text-base mb-4">
-              Hello there, we are 35FRAMESPHOTOGRAPHY
-            </p>
+        {/* Title */}
+        <h2 className="text-center text-3xl md:text-4xl font-serif font-bold text-gray-800">
+          About 35 Frames Photography
+        </h2>
+        <p className="text-center text-gray-600 mt-2 text-base md:text-lg">
+          Capturing emotions. Creating timeless memories.
+        </p>
 
-            <p className="text-gray-700 leading-relaxed text-base sm:text-lg mb-8">
-              A luxury photographer dedicated to preserving life’s most meaningful moments with elegance, emotion, and artistry. Deeply inspired by the richness of Indian culture and heartfelt celebrations, we capture stories with refined aesthetics, authentic expressions, and meticulous attention to detail — transforming every frame into a beautiful memory that lasts forever.
-            </p>
+        {/* Founder Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-14">
 
-            {/* Image 2 */}
-            <div className="overflow-hidden rounded-3xl shadow-md mb-8">
+          {/* IMAGE + NAME */}
+          <div className="text-center">
+            <div className="overflow-hidden rounded-3xl shadow-xl">
               <img
-                src={cover4}
-                alt="Elysia Event Planning Team"
-                className="w-full h-[240px] sm:h-[300px] md:h-[380px] object-cover"
+                src={boss}
+                alt="Founder"
+                className="w-full h-[420px] sm:h-[380px] md:h-[430px] object-cover"
               />
             </div>
 
-            <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
-              Weddings are among life’s most meaningful milestones. With
-              thoughtful planning and attention to detail, we create refined
-              celebrations that honor love, tradition, and family — experiences
-              meant to be cherished for generations.
+            <h3 className="mt-5 text-2xl font-serif font-bold text-gray-800">
+              Founder — Somu Sekhar
+            </h3>
+            <p className="text-gray-600 italic">
+              Founder of 35 Frames Photography
+            </p>
+          </div>
+
+          {/* CONTENT */}
+          <div>
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+              Hello there, we are <span className="font-semibold">35 Frames Photography</span>, 
+              a luxury photography brand dedicated to preserving life’s most meaningful 
+              moments with elegance, artistry, and emotion.
+            </p>
+
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed mt-6">
+              Founded in 2004 by <span className="font-semibold">Mr. Somu Sekhar</span>, we
+              are a complete photography & videography studio equipped with expert 
+              photographers, editors, videographers, and world-class technology.
+            </p>
+
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed mt-6">
+              From weddings to birthdays, traditional photography to cinematic videography,
+              we don’t just click pictures — we create memories that last forever.
             </p>
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-3xl shadow-md mt-18">
-          <img
-            src={boss}
-            alt="Elysia Event Planner"
-            className="
-      w-full
-      h-[450px]        /* mobile */
-      sm:h-[300px]     /* small screens */
-      md:h-[400px]     /* tablets */
-      lg:h-[1200px]     /* desktop */
-      object-cover
-      object-center
-    "
-          />
+        {/* TEAM GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
+
+          <div className="rounded-3xl shadow-xl overflow-hidden bg-white">
+            <img src={videopeople} className="w-full h-[320px] object-cover" />
+            <div className="p-5 text-center">
+              <h4 className="text-xl font-semibold">Pratap</h4>
+              <p className="text-gray-600">Videographer</p>
+            </div>
+          </div>
+
+          <div className="rounded-3xl shadow-xl overflow-hidden bg-white">
+            <img src={editor} className="w-full h-[320px] object-cover" />
+            <div className="p-5 text-center">
+              <h4 className="text-xl font-semibold">Vashu</h4>
+              <p className="text-gray-600">Photo Editor</p>
+            </div>
+          </div>
+
+          <div className="rounded-3xl shadow-xl overflow-hidden bg-white">
+            <img src={both} className="w-full h-[320px] object-cover" />
+            <div className="p-5 text-center">
+              <h4 className="text-xl font-semibold">Venkey</h4>
+              <p className="text-gray-600">Videographer & Editor</p>
+            </div>
+          </div>
         </div>
-        <p className="font-serif italic mt-5 text-xl">Founder of 35FRAMESPHOTOGRAPHY</p>
-        <p className="font-serif italic text-3xl">Sunil SL</p>
 
-        {/* Quote */}
-        <p
-          className="text-base sm:text-lg md:text-xl mt-12 md:mt-16 font-serif italic"
-          style={{ fontFamily: "Baskervville, serif" }}
-        >
-          So we’re extremely delighted to be part of your celebration.
+        {/* Closing Line */}
+        <p className="text-center text-lg md:text-xl mt-14 font-serif italic text-gray-800">
+          We are truly honored to be a part of your beautiful celebrations.
         </p>
-      </div>
-
-      {/* Bottom Full Image */}
-      <div className="mt-16 md:mt-20">
-        <img
-          src={cover1}
-          alt="Elysia Decorative"
-          className="w-full object-cover"
-        />
       </div>
     </section>
   );
