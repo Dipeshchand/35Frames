@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import img1 from "../assets/images/reff1-min.JPG";
 import img2 from "../assets/images/reff2-min.JPG";
 import img3 from "../assets/images/reff3-min.JPG";
-import img4 from "../assets/images/reff4-min.jpg";
+import img4 from "../assets/images/reff4-min.JPG";
 import img5 from "../assets/images/reff5-min.JPG";
 import img6 from "../assets/images/reff6-min.JPG";
 import img7 from "../assets/images/reff7-min.JPG";
