@@ -160,9 +160,7 @@
 //   );
 // }
 
-import React from "react";
-
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import API from "../../api";
@@ -170,117 +168,94 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Portfolio.css";
 
-// STATIC IMAGES OUTSIDE COMPONENT (prevents re-creation each render)
-import s1 from "../../src/assets/images/reff1-min.JPG";
-import s2 from "../../src/assets/images/reff2-min.JPG";
-import s3 from "../../src/assets/images/reff3-min.JPG";
-// ... keep imports
 
-const staticImages = [
-  { id: "st1", name: "Static 1", url: s1 },
-  { id: "st2", name: "Static 2", url: s2 },
-  { id: "st3", name: "Static 3", url: s3 },
-  // ... continue list
-];
+// ---------- IMPORT ALL STATIC IMAGES AUTOMATICALLY ----------
+const images = import.meta.glob("../../src/assets/images/*.JPG", { eager: true });
 
-// ---- MEMOIZED CARD COMPONENT ----
-const GalleryCard = React.memo(({ src, name, onClick }) => (
-  <div className="gallery-item" onClick={onClick}>
-    <div className="gallery-card">
-      <img
-        src={src}
-        alt={name}
-        loading="lazy"
-        decoding="async"
-        fetchpriority="low"
-      />
-      <span className="magnify-icon">
-        <FaSearch className="gallery-icon" />
-      </span>
-    </div>
-    {name && <p className="gallery-title">{name}</p>}
-  </div>
-));
+const staticImages = Object.keys(images).map((path, index) => ({
+  id: `st${index + 1}`,
+  name: `Static ${index + 1}`,
+  url: images[path].default
+}));
+
 
 export default function Portfolio() {
   const [covers, setCovers] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    AOS.init({
-      duration: 700,
-      once: true,
-      easing: "ease-in-out",
-    });
 
-    const controller = new AbortController();
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
 
     const fetchCovers = async () => {
       try {
-        const res = await API.get("/images", {
-          signal: controller.signal,
-        });
-        setCovers(res.data);
+        const res = await API.get("/images");
+        setCovers(res.data || []);
       } catch (error) {
-        if (error.name !== "CanceledError") {
-          console.error("Failed to fetch images:", error);
-        }
+        console.error("Failed to fetch images:", error);
       }
     };
 
     fetchCovers();
-    return () => controller.abort();
   }, []);
 
-  // ---- Memoize processed covers to avoid recalculations ----
-  const processedCovers = useMemo(
-    () =>
-      covers.map((cover) => ({
-        ...cover,
-        finalUrl: cover?.url?.startsWith("http")
-          ? cover.url
-          : `https://dp-c-backend.onrender.com${cover.url}`,
-      })),
-    [covers]
-  );
 
   return (
     <div className="portfolio-container mt-20 bg-[#F6F3EC]">
+
       <h2
         className="section-title"
         data-aos="fade-up"
         data-aos-delay="150"
-        style={{ fontFamily: "'Allura', cursive", fontSize: "50px", color: "black" }}
       >
         Portfolio
       </h2>
 
-      <div className="underline" data-aos="fade-down" data-aos-delay="300"></div>
+      <div className="underline" data-aos="fade-down" data-aos-delay="300" />
 
-      {/* STATIC IMAGES */}
+      {/* STATIC GALLERY */}
       <div className="gallery mt-28" data-aos="fade-up" data-aos-delay="200">
-        {staticImages.map((img) => (
-          <GalleryCard key={img.id} src={img.url} name={img.name} />
+        {staticImages.map(img => (
+          <div key={img.id} className="gallery-item">
+            <div className="gallery-card">
+              <img src={img.url} alt={img.name} loading="lazy" />
+            </div>
+          </div>
         ))}
       </div>
 
-      {/* API ALBUMS */}
+
+      {/* API GALLERY */}
       <div className="gallery" data-aos="fade-up" data-aos-delay="300">
-        {processedCovers.length > 0 ? (
-          processedCovers.map((cover) => (
-            <GalleryCard
-              key={cover._id}
-              src={cover.finalUrl}
-              name={cover.name}
-              onClick={() =>
-                navigate(`/album/${encodeURIComponent(cover.name)}`)
-              }
-            />
-          ))
+        {covers.length ? (
+          covers.map(cover => {
+            const imageSrc = cover.url?.startsWith("http")
+              ? cover.url
+              : `https://dp-c-backend.onrender.com${cover.url}`;
+
+            return (
+              <div
+                key={cover._id}
+                className="gallery-item"
+                onClick={() => navigate(`/album/${encodeURIComponent(cover?.name || "")}`)}
+              >
+                <div className="gallery-card">
+                  <img src={imageSrc} alt={cover?.name} loading="lazy" />
+                  <span className="magnify-icon">
+                    <FaSearch className="gallery-icon" />
+                  </span>
+                </div>
+                <p className="gallery-title">{cover?.name}</p>
+              </div>
+            );
+          })
         ) : (
-          <p style={{ textAlign: "center", width: "100%" }}>No albums found</p>
+          <p style={{ textAlign: "center", width: "100%" }}>
+            No albums found
+          </p>
         )}
       </div>
+
     </div>
   );
 }

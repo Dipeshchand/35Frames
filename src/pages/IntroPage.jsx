@@ -1,20 +1,20 @@
 import { useNavigate } from "react-router-dom";
 
-import img1 from "../assets/images/full.jpeg";
-import img2 from "../assets/images/mains.jpg";
-import img3 from "../assets/images/main3.jpg";
-import img4 from "../assets/images/main-4.jpg";
-import img5 from "../assets/images/hero-bg.png";
-import img6 from "../assets/images/fifth.jpg";
-import img7 from "../assets/images/seventh.jpg";
+import img1 from "../assets/images/reff1-min.JPG";
+import img2 from "../assets/images/reff2-min.JPG";
+import img3 from "../assets/images/reff3-min.JPG";
+import img4 from "../assets/images/reff4-min.JPG";
+import img5 from "../assets/images/reff5-min.JPG";
+import img6 from "../assets/images/reff6-min.JPG";
+import img7 from "../assets/images/reff7-min.JPG";
 //
-import img8 from "../assets/images/story-img-1.jpg";
-import img9 from "../assets/images/first.jpg";
-import img10 from "../assets/images/bead.jpg";
-import img11 from "../assets/images/Third.jpg";
-import img12 from "../assets/images/aboutus.jpg";
-import img13 from "../assets/images/story-img-2.jpg";
-import img14 from "../assets/images/haldi.jpeg";
+import img8 from "../assets/images/reff8-min.JPG";
+import img9 from "../assets/images/reff9-min.JPG";
+import img10 from "../assets/images/reff10-min.JPG";
+import img11 from "../assets/images/reff11-min.JPG";
+import img12 from "../assets/images/reff12-min.JPG";
+import img13 from "../assets/images/reff13-min.JPG";
+import img14 from "../assets/images/reff14-min.JPG";
 
 export default function IntroPage() {
   const navigate = useNavigate();
