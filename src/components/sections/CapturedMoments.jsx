@@ -50,7 +50,7 @@ export default function CapturedMoments() {
       <div className="max-w-6xl mx-auto text-center">
 
         {/* Title */}
-        <h2 className="text-4xl md:text-5xl font-serif font-baskervville  mb-4">
+        <h2 className="text-4xl md:text-5xl font-serif font-baskervville  mb-4" style={{fontFamily:"light"}}>
           Explore each celebration and witness seamless experiences unfold.
         </h2>
 

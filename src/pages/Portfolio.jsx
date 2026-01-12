@@ -62,7 +62,8 @@ export default function Portfolio() {
   const closeZoom = () => setZoomImg(null);
 
   return (
-    <div className="portfolio-container mt-20 bg-[#F6F3EC]">
+    <div className="portfolio-container w-full text-center px-4 mt-20 bg-[#F6F3EC] ">
+    <div className="text-xl sm:text-base md:text-lg lg:text-xl  font-medium tracking-wide text-gray-700 mt-10" style={{fontFamily:"light1"}}>Click the Photo for better Experinces</div>
 
       {/* ================= STATIC IMAGE GRID ================= */}
 
