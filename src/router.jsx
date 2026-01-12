@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import App from "./App";
 import AlbumPage from "./pages/AlbumPage";
+import Gallery from "./pages/Gallery";
 
 // Lazy-loaded pages
 const IntroPage = lazy(() => import("./pages/IntroPage"));
@@ -51,10 +52,18 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "portfolio",
+        path: "gallery",
         element: (
           <Suspense fallback={<Loader />}>
             <Portfolio />
+          </Suspense>
+        ),
+      },
+      {
+        path:"porthfolio",
+        element:(
+           <Suspense fallback={<Loader />}>
+            <Gallery />
           </Suspense>
         ),
       },
